@@ -2,11 +2,10 @@ import React from "react";
 import { UseEffect } from './UseEffect';
 import { Cleanup } from './Cleanup';
 import { CustomHooks } from './CustomHooks';
-import "./style.css";
 
 export default function App() {
   return (
-    <>
+    <div class="container">
       <h1>code-next-react-hooks</h1>
 
       <hr />
@@ -20,6 +19,6 @@ export default function App() {
       <br />
 
       <CustomHooks />
-    </>
+    </div>
   );
 }
