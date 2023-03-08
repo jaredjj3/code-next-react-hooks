@@ -56,3 +56,63 @@ Notice that `useEffect` takes two parameters. The first one is a function that c
 ### YOUR TURN
 
 Open `src/UseEffect.js` and practice.
+
+## Cleanup
+
+`useEffect` also has a way to perform cleanups. This is useful when a dependency changes and invalidates the side effect or when the component goes out of scope. Cleanup happens [before](https://reactjs.org/docs/hooks-reference.html#cleaning-up-an-effect) the next effect is executed.
+
+For example, let's say we have a chat application and we wanted to subscribe to all the messages going into a channel.
+
+```jsx
+import { client } from 'some-chat-application-library';
+
+const ChatLog = (props) => {
+  const [messages, setMessages] = useState([]);
+  const channelId = props.channelId;
+
+  useEffect(() => {
+    const subscription = client.subscribe(channelId, (message) => {
+      setMessages((messages) => [...messages, message]);
+    });
+    return () => {
+      // When the channelId changes, we no longer want to receive notifications
+      // about the old channelId.
+      subscription.unsubscribe();
+      setMessages([]);
+    };
+  }, [channelId]);
+
+  return (
+    <ul>
+      {messages.map((message) => <li key={message.id}>{message.text}</li>)}
+    </ul>
+  );
+};
+```
+
+Another example is using `setInterval`. You don't want the interval to run when the component goes out of scope.
+
+```jsx
+const SecondsAgo = () => {
+  const [secondsAgo, setSecondsAgo] = useState(0);
+
+  // NOTE: An empty dependency array will cause the effect to only be run once.
+  // the cleanup will run when the component goes out of scope.
+  useEffect(() => {
+    const startMs = Date.now();
+    const handle = setInterval(() => {
+      const endMs = Date.now();
+      const sec = endMs - startMs;
+    }, 1000);
+    return () => {
+      clearInterval(handle);
+    };
+  }, []);
+
+  return <div>{secondsAgo} seconds ago</div>;
+};
+```
+
+### YOUR TURN
+
+Open `src/Cleanup.js` and practice.
