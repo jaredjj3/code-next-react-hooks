@@ -42,6 +42,7 @@ export const Cleanup = () => {
         </button>
       </div>
 
+      {/* TODO: Show how many seconds ago the text was shown. */}
       {isSecondsAgoVisible && <div>shown seconds ago: {secondsAgo}</div>}
     </>
   );
