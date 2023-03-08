@@ -29,7 +29,7 @@ export const UseEffect = () => {
 
       <label for="username">username</label>
       <div>
-        <input id="username" onChange={onChange} />
+        <input id="username" onChange={onChange} value={username} />
         <span>{statusEmoji}</span>
       </div>
 
