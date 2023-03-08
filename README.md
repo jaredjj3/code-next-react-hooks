@@ -54,3 +54,5 @@ const Foo = () => {
 Notice that `useEffect` takes two parameters. The first one is a function that contains effectful code, and the second one is a dependency array. The dependency array should contain the state that should trigger the function when the value _changes_. If all the values in the dependency array are the same, the effectful code will not run.
 
 ### YOUR TURN
+
+Open `src/UseEffect.js` and practice.

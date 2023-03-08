@@ -13,6 +13,15 @@ export const UseEffect = () => {
 
   // TODO: Create a side effect that updates statusEmoji based on the
   // username's length with respect to MIN_CHARS and MAX_CHARS.
+  useEffect(() => {
+    if (MIN_CHARS <= username.length && username.length <= MAX_CHARS) {
+      setStatusEmoji('✅');
+    } else if (username.length === 0) {
+      setStatusEmoji('');
+    } else {
+      setStatusEmoji('❌');
+    }
+  }, [username])
 
   return (
     <>
@@ -25,7 +34,7 @@ export const UseEffect = () => {
       </div>
 
       {/* TODO: Show how many characters the username has. */}
-      <small>char count:</small>
+      <small>char count: {username.length}</small>
     </>
   );
 };
