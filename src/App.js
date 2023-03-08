@@ -1,5 +1,6 @@
 import React from "react";
 import { UseEffect } from './UseEffect';
+import { Cleanup } from './Cleanup';
 import "./style.css";
 
 export default function App() {
@@ -10,6 +11,10 @@ export default function App() {
       <hr />
 
       <UseEffect />
+
+      <br />
+
+      <Cleanup />
     </>
   );
 }

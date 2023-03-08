@@ -102,7 +102,9 @@ const SecondsAgo = () => {
     const startMs = Date.now();
     const handle = setInterval(() => {
       const endMs = Date.now();
-      const sec = endMs - startMs;
+      const ms = endMs - startMs;
+      const sec = Math.round(ms / 1000);
+      setSecondsAgo(sec);
     }, 1000);
     return () => {
       clearInterval(handle);
