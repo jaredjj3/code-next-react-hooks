@@ -118,3 +118,52 @@ const SecondsAgo = () => {
 ### YOUR TURN
 
 Open `src/Cleanup.js` and practice.
+
+## Custom Hooks
+
+Hooks are highly composable and portable. This means you can create your own hooks and use them in several different components.
+
+```jsx
+const useToggle = (initial = false) => {
+  const [value, setValue] = useState(initial);
+
+  const toggle = useCallback(() => {
+    setValue((value) => !value);
+  }, [])
+
+  return [value, toggle];
+};
+
+const Foo = () => {
+  const [value, toggle] = useToggle();
+
+  return (
+    <>
+      <div>value: {value}</div>
+      <button onClick={toggle}>toggle</button>
+    </>
+  );
+};
+
+const Bar = () => {
+  const [value, toggle] = useToggle(true);
+
+  return (
+    <>
+      <div>value: {value}</div>
+      <button onClick={toggle}>toggle</button>
+    </>
+  );
+};
+
+```
+
+However, React has rules you must follow when creating and using hooks. Open and bookmark https://reactjs.org/docs/hooks-rules.html.
+
+Read it once. Read it twice. Try to explain it in your own words.
+
+Violating these rules will lead to _undefined_ behavior. Sometimes it might work favorably, but often times it will not. There's also no guarantee that it will continue working as libraries change.
+
+### YOUR TURN
+
+Open `src/CustomHooks.js` and practice.

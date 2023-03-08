@@ -1,6 +1,7 @@
 import React from "react";
 import { UseEffect } from './UseEffect';
 import { Cleanup } from './Cleanup';
+import { CustomHooks } from './CustomHooks';
 import "./style.css";
 
 export default function App() {
@@ -15,6 +16,10 @@ export default function App() {
       <br />
 
       <Cleanup />
+
+      <br />
+
+      <CustomHooks />
     </>
   );
 }
