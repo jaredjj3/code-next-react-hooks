@@ -28,7 +28,7 @@ export const Cleanup = () => {
     }, 1000);
     return () => {
       clearInterval(handle);
-      setSecondsAgo(sec);
+      setSecondsAgo(0);
     };
   }, [isSecondsAgoVisible]);
 
@@ -37,7 +37,7 @@ export const Cleanup = () => {
       <h2>Cleanup</h2>
 
       <div>
-        <button onClick={onButtonClick}>
+        <button class="btn btn-primary" onClick={onButtonClick}>
           {isSecondsAgoVisible ? 'Hide' : 'Show'}
         </button>
       </div>

@@ -9,7 +9,9 @@ export const CustomHooks = () => {
     <>
       <h2>CustomHooks</h2>
       <div>
-        <button onClick={nextColor}>next color</button>
+        <button class="btn btn-primary" onClick={nextColor}>
+          next color
+        </button>
       </div>
 
       <br />
@@ -45,7 +47,7 @@ const useColor = () => {
     return () => {
       clearInterval(handle);
     };
-  }, [nextColor])
+  }, [nextColor]);
 
   return [COLORS[index], nextColor];
 };

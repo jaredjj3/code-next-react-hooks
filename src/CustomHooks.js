@@ -9,7 +9,9 @@ export const CustomHooks = () => {
     <>
       <h2>CustomHooks</h2>
       <div>
-        <button onClick={nextColor}>next color</button>
+        <button class="btn btn-primary" onClick={nextColor}>
+          next color
+        </button>
       </div>
 
       <br />
@@ -33,8 +35,7 @@ const COLORS = ['red', 'green', 'blue'];
 // TODO: Update this custom hook to cycle through the COLORS array. When at the
 // end of the array, go back to the first choice.
 const useColor = () => {
-  
   // BONUS: Can you make the colors change every second?
-  
+
   return [];
 };
