@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+// TODO: Without changing anything, what does this component do?
+// It shows and hides text when clicking the Show/Hide button.
 export const Cleanup = () => {
   const [isSecondsAgoVisible, setIsSecondsAgoVisible] = useState(false);
 
@@ -7,8 +9,9 @@ export const Cleanup = () => {
     setIsSecondsAgoVisible((isSecondsAgoVisible) => !isSecondsAgoVisible);
   };
 
-  // TODO: Create state and an effect to show how many seconds ago the
-  // "shown seconds ago" has been visible.
+  // TODO: Create state and an effect to show how many seconds ago the 
+  // "shown seconds ago" has been visible. Does it behave correctly when
+  // you show the text, wait a few seconds, then show it again?
   const [secondsAgo, setSecondsAgo] = useState(0);
   useEffect(() => {
     // I like the return early if the conditions aren't met because it's
@@ -25,6 +28,7 @@ export const Cleanup = () => {
     }, 1000);
     return () => {
       clearInterval(handle);
+      setSecondsAgo(sec);
     };
   }, [isSecondsAgoVisible]);
 

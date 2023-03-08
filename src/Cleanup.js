@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// TODO: Without changing anything, what does this component do?
 export const Cleanup = () => {
   const [isSecondsAgoVisible, setIsSecondsAgoVisible] = useState(false);
 
@@ -8,7 +9,8 @@ export const Cleanup = () => {
   };
 
   // TODO: Create state and an effect to show how many seconds ago the 
-  // "shown seconds ago" has been visible.
+  // "shown seconds ago" has been visible. Does it behave correctly when
+  // you show the text, wait a few seconds, then show it again?
 
   return (
     <>
