@@ -22,7 +22,7 @@ export const UseEffect = () => {
       <div>
         <input
           id="username"
-          class="form-control"
+          className="form-control"
           onChange={onChange}
           value={username}
         />

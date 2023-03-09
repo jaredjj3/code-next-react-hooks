@@ -37,7 +37,7 @@ export const Cleanup = () => {
       <h2>Cleanup</h2>
 
       <div>
-        <button class="btn btn-primary" onClick={onButtonClick}>
+        <button className="btn btn-primary" onClick={onButtonClick}>
           {isSecondsAgoVisible ? 'Hide' : 'Show'}
         </button>
       </div>

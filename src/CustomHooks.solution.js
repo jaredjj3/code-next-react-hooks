@@ -9,7 +9,7 @@ export const CustomHooks = () => {
     <>
       <h2>CustomHooks</h2>
       <div>
-        <button class="btn btn-primary" onClick={nextColor}>
+        <button className="btn btn-primary" onClick={nextColor}>
           next color
         </button>
       </div>

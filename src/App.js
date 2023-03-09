@@ -5,7 +5,7 @@ import { CustomHooks } from './CustomHooks';
 
 export default function App() {
   return (
-    <div class="container">
+    <div className="container">
       <h1>code-next-react-hooks</h1>
 
       <hr />
