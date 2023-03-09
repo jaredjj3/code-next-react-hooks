@@ -2,6 +2,8 @@
 
 [Edit on StackBlitz ⚡️](https://stackblitz.com/edit/code-next-react-hooks)
 
+A lesson for the [Code Next](https://codenext.withgoogle.com/) React club.
+
 In this lesson, engineers will
 
 - learn hooks provided from React
