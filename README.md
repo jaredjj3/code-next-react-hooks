@@ -6,41 +6,62 @@ A lesson for the [Code Next](https://codenext.withgoogle.com/) React club.
 
 In this lesson, engineers will
 
+- how to make side effects
 - learn hooks provided from React
 - know the Rules of Hooks
 - know how to compose their own hooks
 
-## useEffect
+## Side Effects
+
+Sometimes
+
+```jsx
+const Foo = () => {
+  const [count, setCount] = useState(0);
+  const [taken, setTaken] = useState(false);
+
+  // This is derivable from state, so we can just calculate it inside the function
+  // instead of create new state for it.
+  const total = Math.pow(2, count);
+
+  const take = () => {
+    setTaken(true);
+    // a side effect alerting the user
+    alert(`you took ${total}!`);
+  };
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <div>count: {count}</div>
+      <div>total: {total}</div>
+      <div>status: {taken ? 'TAKEN' : 'NOT TAKEN'}</div>
+
+      <br />
+
+      <button disabled={taken} onClick={take}>
+        take it
+      </button>
+      <button disabled={taken} onClick={incrementCount}>
+        double it and give it to the next person
+      </button>
+    </div>
+  );
+};
+```
+
+### YOUR TURN
+
+Open `src/SideEffects.js` and practice.
+
+## UseEffect
 
 The next most important hook at readily at your disposal is the `useEffect` hook. It's used to synchronize your React application with external systems such as a server or even Web APIs like `setTimeout`.
 
 >NOTE: You can see the hooks React provides in the React docs ([legacy](https://reactjs.org/docs/hooks-reference.html), [new](https://react.dev/reference/react)).
-
-```jsx
-const AutoCounter = () => {
-  const [count, setCount] = useState(0);
-  const [delta, setDelta] = useState(1);
-
-  useEffect(() => {
-    const handle = setInterval(() => {
-      setCount((count) => count + delta);
-    }, 1000);
-    return () => clearInterval(handle);
-  }, [delta]);
-
-  return <div>{count}</div>;
-};
-```
-
-Notice that `useEffect` takes two parameters. The first one is a function that contains effectful code, and the second one is a dependency array. The dependency array should contain the state that should trigger the function when the value _changes_. If all the values in the dependency array are the same, the effectful code will not run.
-
-`useEffect` can _optionally_ return a function that is run during cleanup. Cleanup happens after any value in the dependency array changes.
-
-### YOUR TURN
-
-Open `src/UseEffect.js` and practice.
-
-## Cleanup
 
 `useEffect` also has a way to perform cleanups. This is useful when a dependency changes and invalidates the side effect or when the component goes out of scope. Cleanup happens [before](https://reactjs.org/docs/hooks-reference.html#cleaning-up-an-effect) the next effect is executed.
 
@@ -73,6 +94,8 @@ const ChatLog = (props) => {
 };
 ```
 
+Notice that `useEffect` takes two parameters. The first one is a function that contains effectful code, and the second one is a dependency array. The dependency array should contain the state that should trigger the function when the value _changes_. If all the values in the dependency array are the same, the effectful code will not run.
+
 Another example is using `setInterval`. You don't want the interval to run when the component goes out of scope.
 
 ```jsx
@@ -100,7 +123,7 @@ const SecondsAgo = () => {
 
 ### YOUR TURN
 
-Open `src/Cleanup.js` and practice.
+Open `src/UseEffect.js` and practice.
 
 ## Custom Hooks
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { UseEffect } from './UseEffect';
-import { Cleanup } from './Cleanup';
 import { CustomHooks } from './CustomHooks';
+import { SideEffects } from './SideEffects';
 
 export default function App() {
   return (
@@ -10,11 +10,11 @@ export default function App() {
 
       <hr />
 
-      <UseEffect />
+      <SideEffects />
 
       <br />
 
-      <Cleanup />
+      <UseEffect />
 
       <br />
 
