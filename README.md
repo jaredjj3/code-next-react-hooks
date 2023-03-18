@@ -13,7 +13,7 @@ In this lesson, engineers will
 
 ## Side Effects
 
-Sometimes
+Sometimes you want different things to happen during an event or when state changes. Most of the time, you can make state changes inside of the render function. Other times, its better to put the side effect in an event handler.
 
 ```jsx
 const Foo = () => {
@@ -120,6 +120,8 @@ const SecondsAgo = () => {
   return <div>{secondsAgo} seconds ago</div>;
 };
 ```
+
+>NOTE: There are a lot of times when you don't need to `useEffect`. Checkout [the useEffect docs](https://react.dev/reference/react/useEffect) for good examples of when to use it and [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect) article showing examples of when not to use it.
 
 ### YOUR TURN
 
