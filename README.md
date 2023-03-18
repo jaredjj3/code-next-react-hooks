@@ -12,48 +12,29 @@ In this lesson, engineers will
 
 ## useEffect
 
-The next most important hook at readily at your disposal is the `useEffect` hook. It's used to cause side effects in your application.
+The next most important hook at readily at your disposal is the `useEffect` hook. It's used to synchronize your React application with external systems such as a server or even Web APIs like `setTimeout`.
 
->NOTE: You can see the hooks React provides in the [React docs](https://reactjs.org/docs/hooks-reference.html).
+>NOTE: You can see the hooks React provides in the React docs ([legacy](https://reactjs.org/docs/hooks-reference.html), [new](https://react.dev/reference/react)).
 
 ```jsx
-const Foo = () => {
+const AutoCounter = () => {
   const [count, setCount] = useState(0);
-  const [total, setTotal] = useState(1);
-  const [taken, setTaken] = useState(false);
-
-  const take = () => {
-    setTaken(true);
-  };
-
-  const incrementCount = () => {
-    setCount(count + 1);
-  };
+  const [delta, setDelta] = useState(1);
 
   useEffect(() => {
-    setTotal(Math.pow(2, count));
-  }, [count]);
+    const handle = setInterval(() => {
+      setCount((count) => count + delta);
+    }, 1000);
+    return () => clearInterval(handle);
+  }, [delta]);
 
-  return (
-    <div>
-      <div>count: {count}</div>
-      <div>total: {total}</div>
-      <div>status: {taken ? 'TAKEN' : 'NOT TAKEN'}</div>
-
-      <br />
-
-      <button disabled={taken} onClick={take}>
-        take it
-      </button>
-      <button disabled={taken} onClick={incrementCount}>
-        double it and give it to the next person
-      </button>
-    </div>
-  );
+  return <div>{count}</div>;
 };
 ```
 
 Notice that `useEffect` takes two parameters. The first one is a function that contains effectful code, and the second one is a dependency array. The dependency array should contain the state that should trigger the function when the value _changes_. If all the values in the dependency array are the same, the effectful code will not run.
+
+`useEffect` can _optionally_ return a function that is run during cleanup. Cleanup happens after any value in the dependency array changes.
 
 ### YOUR TURN
 

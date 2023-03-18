@@ -1,36 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-const MIN_CHARS = 3;
-const MAX_CHARS = 16;
-
 export const UseEffect = () => {
-  const [username, setUsername] = useState('');
-  const [statusEmoji, setStatusEmoji] = useState('');
+  const [count, setCount] = useState(0);
+  const [delta, setDelta] = useState(1);
 
-  const onChange = (e) => {
-    setUsername(e.target.value);
-  };
+  // TODO: Wire up delta to be synced with the <input> element.
 
-  // TODO: Create a side effect that updates statusEmoji based on the
-  // username's length with respect to MIN_CHARS and MAX_CHARS.
+  // TODO: Create an effect that increases the count by delta every 3000 milliseconds.
 
   return (
     <>
       <h2>UseEffect</h2>
+      <div>count: {count}</div>
 
-      <label for="username">username</label>
+      <br />
+
+      <label for="delta">delta</label>
       <div>
         <input
-          id="username"
+          id="delta"
+          type="number"
           className="form-control"
-          onChange={onChange}
-          value={username}
         />
-        <span>{statusEmoji}</span>
       </div>
-
-      {/* TODO: Show how many characters the username has. */}
-      <small>char count:</small>
     </>
   );
 };

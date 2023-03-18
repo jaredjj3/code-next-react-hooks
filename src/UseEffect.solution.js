@@ -1,45 +1,37 @@
 import React, { useState, useEffect } from 'react';
 
-const MIN_CHARS = 3;
-const MAX_CHARS = 16;
-
 export const UseEffect = () => {
-  const [username, setUsername] = useState('');
-  const [statusEmoji, setStatusEmoji] = useState('');
+  const [count, setCount] = useState(0);
+  const [delta, setDelta] = useState(1);
 
-  const onChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  // TODO: Create a side effect that updates statusEmoji based on the
-  // username's length with respect to MIN_CHARS and MAX_CHARS.
   useEffect(() => {
-    if (MIN_CHARS <= username.length && username.length <= MAX_CHARS) {
-      setStatusEmoji('✅');
-    } else if (username.length === 0) {
-      setStatusEmoji('');
-    } else {
-      setStatusEmoji('❌');
-    }
-  }, [username]);
+    const handle = setInterval(() => {
+      setCount((count) => count + delta);
+    }, 3000);
+    return () => clearInterval(handle);
+  }, [delta]);
+
+  const onDeltaChange = (e) => {
+    setDelta(parseInt(e.target.value));
+  }
 
   return (
     <>
       <h2>UseEffect</h2>
+      <div>count: {count}</div>
 
-      <label for="username">username</label>
+      <br />
+
+      <label for="delta">delta</label>
       <div>
         <input
-          id="username"
+          id="delta"
+          type="number"
           className="form-control"
-          onChange={onChange}
-          value={username}
+          value={delta}
+          onChange={onDeltaChange}
         />
-        <span>{statusEmoji}</span>
       </div>
-
-      {/* TODO: Show how many characters the username has. */}
-      <small>char count: {username.length}</small>
     </>
   );
 };
