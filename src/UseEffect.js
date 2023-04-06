@@ -14,23 +14,8 @@ export const UseEffect = () => {
   // you show the text, wait a few seconds, then show it again?
   const [secondsAgo, setSecondsAgo] = useState(0);
   useEffect(() => {
-    // I like the return early if the conditions aren't met because it's
-    // easier to read compared to indented code.
-    if (!isSecondsAgoVisible) {
-      return;
-    }
-    const startMs = Date.now();
-    const handle = setInterval(() => {
-      const endMs = Date.now();
-      const ms = endMs - startMs;
-      const sec = Math.round(ms / 1000);
-      setSecondsAgo(sec);
-    }, 1000);
-    return () => {
-      clearInterval(handle);
-      setSecondsAgo(0);
-    };
-  }, [isSecondsAgoVisible]);
+    
+  }, []);
 
   return (
     <>

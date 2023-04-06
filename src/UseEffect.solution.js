@@ -34,7 +34,7 @@ export const UseEffect = () => {
 
   return (
     <>
-      <h2>Cleanup</h2>
+      <h2>UseEffect</h2>
 
       <div>
         <button className="btn btn-primary" onClick={onButtonClick}>
