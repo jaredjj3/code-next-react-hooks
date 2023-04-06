@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 // TODO: Without changing anything, what does this component do?
-// It shows and hides text when clicking the Show/Hide button.
 export const UseEffect = () => {
   const [isSecondsAgoVisible, setIsSecondsAgoVisible] = useState(false);
 
@@ -28,7 +27,6 @@ export const UseEffect = () => {
       </div>
 
       {/* TODO: Show how many seconds ago the text was shown. */}
-      {isSecondsAgoVisible && <div>shown seconds ago: {secondsAgo}</div>}
     </>
   );
 };
